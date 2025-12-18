@@ -16,7 +16,7 @@ use Slim\Psr7\Factory\ResponseFactory;
  */
 final class SlimCallableResolverTest extends TestCase
 {
-    public function testDefault(): void
+    public function testResolveRoute(): void
     {
         $container = Container::getInstance();
         $resolver = new SlimCallableResolver($container);

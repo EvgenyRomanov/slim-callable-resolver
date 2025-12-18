@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace EvgenyRomanov;
 
 use Closure;
@@ -14,7 +16,7 @@ use Slim\Interfaces\AdvancedCallableResolverInterface;
  * @see \Slim\CallableResolver
  * @template TContainerInterface of (ContainerInterface|null)
  */
-class SlimCallableResolver implements AdvancedCallableResolverInterface
+final class SlimCallableResolver implements AdvancedCallableResolverInterface
 {
     public static string $callablePattern = '!^([^\:]+)\:([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)$!';
 
@@ -30,7 +32,7 @@ class SlimCallableResolver implements AdvancedCallableResolverInterface
     }
 
     /**
-     * {@inheritdoc}
+     *
      */
     public function resolve($toResolve): callable
     {
@@ -48,7 +50,7 @@ class SlimCallableResolver implements AdvancedCallableResolverInterface
     }
 
     /**
-     * {@inheritdoc}
+     *
      */
     public function resolveRoute($toResolve): callable
     {
@@ -56,7 +58,7 @@ class SlimCallableResolver implements AdvancedCallableResolverInterface
     }
 
     /**
-     * {@inheritdoc}
+     *
      */
     public function resolveMiddleware($toResolve): callable
     {
@@ -64,7 +66,7 @@ class SlimCallableResolver implements AdvancedCallableResolverInterface
     }
 
     /**
-     * @param callable|array{class-string, string}|string $toResolve
+     * @param array{class-string, string}|callable|string $toResolve
      *
      * @throws RuntimeException
      */
@@ -90,7 +92,6 @@ class SlimCallableResolver implements AdvancedCallableResolverInterface
     }
 
     /**
-     * @param mixed $toResolve
      */
     private function isRoute($toResolve): bool
     {
@@ -98,7 +99,6 @@ class SlimCallableResolver implements AdvancedCallableResolverInterface
     }
 
     /**
-     * @param mixed $toResolve
      */
     private function isMiddleware($toResolve): bool
     {
@@ -136,8 +136,6 @@ class SlimCallableResolver implements AdvancedCallableResolverInterface
     }
 
     /**
-     * @param mixed $resolved
-     * @param mixed $toResolve
      *
      * @throws RuntimeException
      */
@@ -167,9 +165,9 @@ class SlimCallableResolver implements AdvancedCallableResolverInterface
     }
 
     /**
-     * @param callable|string|array{class-string, string}|mixed $toResolve
+     * @param array{class-string, string}|callable|mixed|string $toResolve
      *
-     * @return callable|string|array{class-string, string}|mixed
+     * @return array{class-string, string}|callable|mixed|string
      */
     private function prepareToResolve($toResolve)
     {
