@@ -1,0 +1,34 @@
+{
+    "name": "evgeny-romanov/slim-callable-resolver",
+    "type": "library",
+    "license": "BSD-3-Clause",
+    "config": {
+      "sort-packages": true
+    },
+    "require": {
+        "php": "^8.3",
+        "psr/http-message": "^2.0",
+        "slim/slim": "^4.15"
+    },
+    "autoload": {
+      "psr-4": {
+        "EvgenyRomanov\\": "src/"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "Test\\EvgenyRomanov\\": "tests/"
+      }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.90",
+        "illuminate/container": "^12.43",
+        "phpunit/phpunit": "^12.4",
+        "slim/psr7": "^1.8"
+    },
+    "scripts": {
+      "test": "phpunit --colors=always",
+      "php-cs-fixer": "php-cs-fixer --config=.php-cs-fixer.php --allow-risky=yes",
+      "psalm": "psalm --config=psalm.xml"
+    }
+}
